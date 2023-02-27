@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Task update</title>
+{% endblock %}
+
+{% block body %}
+<div class="contentupdate adminbody">
+    <div class="main-contentupdate main-projects" style="width: 40%;
+                overflow-y: hidden;
+                overflow-x: hidden;
+                margin-bottom:2%;
+                margin-top:5vh;
+                display:inline-block;
+                padding-bottom:0%;
+                height: 50%;">
+        <h1>Task update</h1>
+        <table>
+            <tr>
+                <th>Task</th>
+                <th>Notes</th>
+                <th>Date added</th>
+                <th>Deadline</th>
+                <th>Progress</th>
+            </tr>
+            <tr>
+                <td>{{ task.content }}</td>
+                <td>{{ task.notes }}</td>
+                <td>{{ task.date_created.date() }}</td>
+                <td>
+                {% if task.deadline.date()|string == '9999-09-09' %}
+                    {{" no preasureee"}}
+                {% else %}
+                    {{ task.deadline.date() }}
+                {% endif %}
+                </td>
+                <td>{{ task.progress}}</td>
+        </table>
+        <div class="form">
+            <form action="/update/{{username}}/{{key}}/{{task.id}}" method="POST">
+                <label for="text">text: </label>
+                <input type="text" name="content" id="content" maxlength="15" placeholder={{ task.content }}>
+                <label for="notes">notes: </label>
+                <input type="text" name="notes" id="notes" maxlength="30" placeholder={{ task.notes }}>
+                <label for="deadline">deadline: </label>
+                <input type="date" name="deadline" id="deadline">
+                <label for="progress">progress: </label>
+                <select name="progress" id='progress'>
+                    <option value="Not started">Not started</option>
+                    <option value="Started">Started</option>
+                    <option value="Middle">Middle</option>
+                    <option value="Almost done">Almost done</option>
+                    <option value="Done">Done</option>
+                </select>
+                <br>
+                <br>
+                <input type="submit" value="update">
+            </form>
+        </div>
+    </div>
+    <div class="cute_images">
+        <li><img src="" id="memes"/></li>
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    {% endblock %}

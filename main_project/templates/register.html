@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Sign-up</title>
+{% endblock %}
+
+{% block body %}
+<body style="height: 100vh;"class="loginn"> 
+    <div class="contentabout">
+        <div class="loginnn">
+        <form action="/register" method="POST">
+            <label for="text"">username: </label>
+            <input type="text" name="username" id="username" maxlength="10" required>
+            <label for="password">password: </label>
+            <input type="password" name="pass1" id="pass1" maxlength="10" required>
+            <label for="password">password verification: </label>
+            <input type="password" name="pass2" id="pass2" maxlength="10" required>
+            <br>
+            <br>    
+            <input type="submit" value="Register">
+        </form>
+        <br>
+
+
+
+
+    </div>
+</div>
+</body>
+{% endblock %}

@@ -1,0 +1,17 @@
+id;content;notes;date_created;deadline;progress;list_type;userid;related_project
+1;a;a;2023-02-14 13:06:04.967406;9999-09-09 00:00:00.000000;Not started;daily_list;2;
+2;a;d;2023-02-14 13:07:51.663420;9999-09-09 00:00:00.000000;Not started;daily_list;2;
+4;first mission;why do i even need them;2023-02-14 13:14:51.842695;2023-02-13 00:00:00.000000;Not started;daily_list;2;blah
+5;snor;loudly;2023-02-15 11:32:33.757639;2023-02-15 00:00:00.000000;Done;daily_list;4;go to sleep
+6;even louder;really loud;2023-02-15 11:32:49.172234;2023-02-15 00:00:00.000000;Done;daily_list;4;go to sleep
+7;find a chicken;in the wild;2023-02-15 11:33:19.120802;2023-02-15 00:00:00.000000;Done;daily_list;2;eat a chicken
+8;ask it nicely to jump into the hot pot;kindly with a smile;2023-02-15 11:33:44.122166;2023-02-16 00:00:00.000000;Done;daily_list;2;eat a chicken
+9;wait untill the cooking is done;yes yes;2023-02-15 11:34:03.505309;2023-02-17 00:00:00.000000;Done;daily_list;2;eat a chicken
+11;c;ads;2023-02-16 13:52:32.749832;9999-09-09 00:00:00.000000;Almost done;daily_list;5;hit a car while you are drunk
+12;ewq;ew;2023-02-21 08:53:16.635755;9999-09-09 00:00:00.000000;Not started;daily_list;6;
+13;as;ss;2023-02-21 08:53:23.704815;9999-09-09 00:00:00.000000;Not started;daily_list;6;
+14;ds;sss;2023-02-21 08:53:28.613543;9999-09-09 00:00:00.000000;Not started;daily_list;6;
+15;ese;ea;2023-02-21 08:54:34.088980;9999-09-09 00:00:00.000000;Not started;daily_list;6;
+16;ss;dd;2023-02-21 08:55:20.994744;9999-09-09 00:00:00.000000;Not started;daily_list;6;
+17;s;s;2023-02-21 08:55:38.681053;9999-09-09 00:00:00.000000;Not started;daily_list;2;
+18;aaa;in the super;2023-02-21 09:09:16.856430;2023-02-22 00:00:00.000000;Not started;daily_list;6;eat a chicken

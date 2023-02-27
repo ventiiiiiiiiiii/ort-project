@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Login</title>
+{% endblock %}
+
+{% block body %}
+<body style="height: 100vh;"class="loginn"> 
+    <h3 style="text-align: center;">your account was created successfully</h3>
+    <div class="contentabout">
+        <div class="loginnn">
+        <h1>~hello good sir, please login~</h1>
+
+        <form action="/login" method="POST">
+            <label for="text"">username: </label>
+            <input type="text" name="username" id="username" maxlength="10" required>
+            <label for="password">password: </label>
+            <input type="password" name="password" id="password" maxlength="10" required>
+            <br>
+            <br>    
+            <input type="submit" value="Login">
+        </form>
+        <br>
+        <span>
+            don't have an account?
+            <br>
+            <a href="/register">click here to register</a>
+        </span>
+        <br>
+    </div>
+</div>
+
+{% endblock %}

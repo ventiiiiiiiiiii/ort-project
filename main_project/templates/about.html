@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>About</title>
+{% endblock %}
+
+{% block body %}
+<div class="contentabout adminbody" style="height: 98vh;">
+    <body class="adminbody">
+        <nav class="main-nav">
+            <ul>
+                <li class="logout">
+                    <a href="/login" class="logout" style="color: red;"> Logout 
+                    </a>
+                </li><li class="daily">
+                    <a href="/about/{{username}}/{{key}}">
+                        <p>about</p>
+                        <img src="{{url_for('static', filename='images/about.jpg')}}" alt="about">
+                    </a>
+                </li><li class="daily">
+                    <a href="/daily_list/{{username}}/{{key}}">
+                        <p>Daily list</p>
+                        <img src="{{url_for('static', filename='images/daily.jpg')}}" alt="daily">
+                    </a>
+                    </li>
+            </ul>
+        </nav>
+    <div style="width: 100%;
+                margin-bottom:2%;
+                margin-top:2vh;
+                display:inline-block;
+                padding-bottom:0%;
+                height: 50%;
+                font-size: 23px;
+                color: rgb(35, 35, 35);">
+                
+    <div class="contentabout"
+     style=
+     "background-color: bisque; padding: 3%;
+     border-radius: 15px;
+     margin: 1vh;
+     margin-bottom: 1%;
+     height: 77vh;
+     overflow-y: hidden;">
+                <br>
+                <h1>title</h1>
+
+
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, veniam corrupti accusamus sint ipsum aliquid, 
+                <br>
+
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, veniam corrupti accusamus sint ipsum aliquid, 
+                <br>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, veniam corrupti accusamus sint ipsum aliquid, 
+                <br>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, veniam corrupti accusamus sint ipsum aliquid, 
+                <br>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, veniam corrupti accusamus sint ipsum aliquid, 
+                <br>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, veniam corrupti accusamus sint ipsum aliquid, 
+                <br>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, veniam corrupti accusamus sint ipsum aliquid, 
+                <br>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, veniam corrupti accusamus sint ipsum aliquid, 
+                <br>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, veniam corrupti accusamus sint ipsum aliquid, 
+                <br>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, veniam corrupti accusamus sint ipsum aliquid, 
+                <br>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, veniam corrupti accusamus sint ipsum aliquid, 
+                <br>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, veniam corrupti accusamus sint ipsum aliquid, 
+                <br>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, veniam corrupti accusamus sint ipsum aliquid, 
+                <br>
+
+
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, veniam corrupti accusamus sint ipsum aliquid, 
+                <br>
+
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, veniam corrupti accusamus sint ipsum aliquid, 
+                <br>
+
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, veniam corrupti accusamus sint ipsum aliquid, 
+                <br>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, veniam corrupti accusamus sint ipsum aliquid, 
+            </div>
+        </div>
+</div>
+
+    {% endblock %}

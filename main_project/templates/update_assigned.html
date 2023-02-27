@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Project update</title>
+{% endblock %}
+
+{% block body %}
+<div class="contentupdate adminbody" style="height: 100vh;">
+    <div class="main-contentupdate main-projects" style="width: 40%;
+                overflow-y: hidden;
+                margin-bottom:2%;
+                margin-top:5vh;
+                display:inline-block;
+                padding-bottom:5vh;
+                height: 80%;">
+        <h1>Assigned update</h1>
+        <br>
+        <table>
+                <th>Name</th>
+                <th>Deadline</th>
+                <th>Status</th>
+                <th>Assigned to</th>
+            <tr>
+                <td>{{ project.name }}</td>
+                <td>
+                {% if project.deadline.date()|string == '9999-09-09' %}
+                {{ " No preasure" }}
+                {% else %}
+                {{ project.deadline.date() }}
+                {% endif %}
+                </td>
+            </td>
+                <td>{{ project.status }}</td>
+                <td>{{ project.assigned_name }}</td>
+
+            </tr>
+        </table>
+        <div class="form">
+            <form action="/update_assigned/{{username}}/{{key}}/{{project.id}}" method="POST">
+                <label for="project_name">Project Name: </label>
+                <input type="text" name="project_name" id="project_name" placeholder={{ project.name }} maxlength="15">
+
+                <label for="deadline">Deadline: </label>
+                <input type="date" name="deadline" id="deadline" >
+
+                <br>
+                <br>
+
+                <label for="assigned_name">Employee Name: </label>
+                <input type="text" name="assigned_name" id="assigned_name" placeholder={{ project.assigned_name }} maxlength="30">
+                
+                <br>
+                <br>
+
+                <select name="progress" id='progress'>
+                    <option value="Not started">Not started</option>
+                    <option value="Started">Started</option>
+                    <option value="Middle">Middle</option>
+                    <option value="Almost done">Almost done</option>
+                    <option value="Done">Done</option>
+                </select>
+                <br>
+                <br>
+                <input type="submit" value="Update">
+            </form>
+        </div>
+    </div>
+    </div>
+    {% endblock %}
+</div>

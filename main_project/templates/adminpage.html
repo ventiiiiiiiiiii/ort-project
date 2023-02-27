@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Admin page</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+{% endblock %}
+
+{% block body %}
+<body class="adminbody" style="height: 72vh;">
+    <nav class="main-nav aadmin">
+        <ul>
+            <li class="logout"><a href="/login" class="logout" style="color: red;"> Logout </a>
+        </ul>
+    </nav>
+    <div class="admin"">
+        <div class="projects">
+            <div class="main-projects">
+            <table style="margin-top: 10%;margin-bottom: 10%;"">
+                <th>Name</th>
+                <th>Deadline</th>
+                <th>Status</th>
+                <th>Assigned to</th>
+                <th>Delete/ <br> Update</th>
+                {% for project in projects %}
+                <tr>
+                    <td>{{ project.name }}</td>
+                    <td>
+                        {% if project.deadline.date()|string == '9999-09-09' %}
+                        {{ " No preasure" }}
+                        {% else %}
+                        {{ project.deadline.date() }}
+                        {% endif %}
+                        </td>
+                    <td>{{ project.status }}</td>
+                    <td>{{ project.assigned_name }}</td>
+                    <td>
+                        <a href="/delete_project/{{username}}/{{key}}/{{ project.id}}" style="color: rgb(255, 0, 0)">
+                            Delete
+                            </a>
+                            /<a href="/update_assigned/{{username}}/{{key}}/{{ project.id}} " style="color: rgb(0, 255, 85)">Update assigned  </a>
+                        <br>
+                    </td>
+                </tr>
+                {% if project.deadline.date()|string == current_date|string %}
+                <script>setTimeout("alert('ATTENTION! the deadline for Project - {{ project.name }} - is today!!');", 100 )</script>
+                {% endif %}
+                {% endfor %}    
+            </table>
+                <div class="form">
+                <form action="/add_project/{{username}}/{{key}}" method="POST">
+                    <label for="project_name">Project Name: </label>
+                    <input type="text" name="project_name" id="project_name" maxlength="15" required>
+
+                  <br>
+                  <br>
+                  
+                    <label for="deadline">Deadline: </label>
+                    <input type="date" name="deadline" id="deadline">
+
+                    <br>
+                    <br>
+
+                    <label for="assigned_name">Employee Name: </label>
+                    <input type="text" name="assigned_name" id="assigned_name" maxlength="15" required>
+                    
+                    <br>
+                    <br>
+
+                    <select name="progress" id='progress'>
+                        <option value="Not started">Not started</option>
+                        <option value="Started">Started</option>
+                        <option value="Middle">Middle</option>
+                        <option value="Almost done">Almost done</option>
+                        <option value="Done">Done</option>
+                    </select>
+                    <br>
+                    <br>
+                    <input type="submit" value="Add Project">
+                </form>
+            </div>
+            </div>
+        </div>
+
+        <div class="graph">
+            <div class="main-graph">
+            <h2 style="color: black;" >percentage of success<h2>
+            <canvas id="lineChart" width="900" height="900"></canvas>
+            <script>
+                var ctx = document.getElementById("lineChart").getContext("2d");
+                var lineChart = new Chart(ctx, {
+                    type: "line",
+                    data: {
+                        labels: {{ labels | safe }},
+                        datasets: [
+                    {
+                        label: "Data points",
+                        data: {{ values | safe }},
+                        fill: true,
+                        borderColor: "rgb(75, 192, 192)",
+                        lineTension: 0.2
+                    }
+                ]
+            },
+                options: {
+                    responsive: true
+                }
+            });
+            </script>
+            <a href="/refresh/{{ username }}/{{ key }}" class="button-33">Refresh</a>
+            <a href="/undo/{{ username }}/{{ key }}" class="button-33" style="background-color: rgb(249, 142, 160);color: rgb(185, 0, 0);">undo</a>
+        </div>
+        </div>
+        
+        
+        <div class="users">
+            <div class="main-users">
+                <table style="margin-top: 10%;">
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Date created</th>
+                    <th>Admin</th>
+                    <th>Delete</th>
+                    {% for user in users_list %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.name}}</td>
+                        <td>{{ user.date_created.date() }}</td>
+                        <td>{{ user.isadmin }}</td>
+                        <td>
+                            <a href="/deleteuser/{{username}}/{{key}}/{{user.id}}" style="color: rgb(195, 0, 0)">Delete</a>
+                            <br>
+                            <br>
+                        </td>
+                    </tr>
+                    {% endfor %}    
+                </table>
+            </div>
+        </div> 
+    </div>
+</div> 
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+{% endblock %}

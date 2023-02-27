@@ -1,0 +1,99 @@
+{% extends 'base.html' %}   
+
+{% block head %}
+<title>Todo-list</title>
+{% endblock %}
+
+{% block body %}
+<div class='blah'>
+<nav class="main-nav">
+    <ul>
+        <li class="logout">
+            <a href="/login" class="logout" style="color: red;"> Logout 
+            </a>
+        </li><li class="daily">
+            <a href="/daily_list/{{username}}/{{key}}">
+                <p>Todo-list</p>
+                <img src="{{url_for('static', filename='images/daily.jpg')}}" alt="daily">
+            </a>
+            </li>
+    </ul>
+</nav>
+<div class="content">
+    <h1>Task Manager</h1>
+    <div class="main-content" style="overflow-y: hidden;">
+        {% for project in projects %}
+        {% if username in project.assigned_name %}
+        <div style="border-bottom: 4px solid black; padding-bottom: 2%;">
+                <h2 style="color: antiquewhite;">Project: '{{ project.name }}'</h2>
+                <br>
+                {% if tasks|length < 1 %} 
+                <h4 style="text-align:center;">kid, add a task</h4>
+                    {% endif %}
+                        <table>
+                            <tr>
+                                <th>Task</th>
+                                <th>Notes</th>
+                                <th>Date added</th>
+                                <th>Deadline</th>
+                                <th>Progress</th>
+                                <th>Actions</th>
+                            </tr>
+                            {% for task in tasks %}
+                            {% if task.userid == key and task.related_project == project.name %}
+                            <tr>
+                                <td>{{ task.content }}</td>
+                                <td>{{ task.notes }}</td>
+                                <td>{{ task.date_created.date() }}</td>
+                                <td>
+                                {% if task.deadline.date()|string == '9999-09-09' %}
+                                    {{" No preasure"}}
+                                {% else %}
+                                    {{ task.deadline.date() }}
+                                    {% endif %}
+                                </td>
+                                <td>{{ task.progress}}</td>
+                                <td>
+                                    <a href="/delete/{{username}}/{{key}}/{{task.id}}" style="color:red;">Delete</a>
+                                    <br>
+                                    <a href="/update/{{username}}/{{key}}/{{task.id}}" style="color:green">Update</a>
+                                    <br>
+                                </td>
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                    </table>
+            <div class="form">
+                <form action="/daily_list/{{username}}/{{key}}" method="POST">
+                    <label for="text">text: </label>
+                    <input type="text" name="content" id="content" maxlength="15" required>
+                    <label for="notes">notes: </label>
+                    <input type="text" name="notes" id="notes" maxlength="20" required>
+                    <label for="deadline">deadline: </label>
+                    <input type="date" name="deadline" id="deadline">
+                    <label for="progress">progress: </label>
+                    <select name="progress" id='progress'>
+                        <option value="Not started">Not started</option>
+                        <option value="Started">Started</option>
+                        <option value="Middle">Middle</option>
+                        <option value="Almost done">Almost done</option>
+                        <option value="Done">Done</option>
+                    </select>
+                    <br>
+                    <br>
+                    <input type="submit" value="Add Task">
+                </form>
+            </div>
+            <br><br><br>
+            <a href="/done/{{ username }}/{{ key }}/{{ project.id }}" class="button-33">Project is Done!</a>
+            <br><br><br>
+        </div>  
+        <br><br><br>
+            {% endif %}
+            {% endfor %}
+        <div class="cute_images">
+            <li><img src="" id="memes"/></li>
+        </div>
+</div>
+</div>
+{% endblock %}
